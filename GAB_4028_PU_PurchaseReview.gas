@@ -1,0 +1,1501 @@
+Program.Sub.ScreenSU.Start
+gui.F_Main..create
+gui.F_Main..caption("Open Order Review")
+gui.F_Main..size(16680,8280)
+gui.F_Main..minx(0)
+gui.F_Main..miny(0)
+gui.F_Main..position(0,0)
+gui.F_Main..event(resize,f_main_resize)
+gui.F_Main..event(unload,subExit)
+gui.F_Main..alwaysontop(False)
+gui.F_Main..fontname("Arial")
+gui.F_Main..fontsize(8)
+gui.F_Main..forecolor(0)
+gui.F_Main..fontstyle(,,,,)
+gui.F_Main..BackColor(-2147483633)
+gui.F_Main..controlbox(True)
+gui.F_Main..maxbutton(True)
+gui.F_Main..minbutton(True)
+gui.F_Main..mousepointer(0)
+gui.F_Main..moveable(True)
+gui.F_Main..sizeable(True)
+gui.F_Main..ShowInTaskBar(True)
+gui.F_Main..titlebar(True)
+gui.F_Main.frmLowerHalf.create(frame)
+gui.F_Main.frmLowerHalf.caption("")
+gui.F_Main.frmLowerHalf.size(15045,1680)
+gui.F_Main.frmLowerHalf.position(60,4550)
+gui.F_Main.frmLowerHalf.visible(True)
+gui.F_Main.frmLowerHalf.borderstyle(1)
+gui.F_Main.frmLowerHalf.fontname("Arial")
+gui.F_Main.frmLowerHalf.fontsize(8)
+gui.F_Main.frmMain.create(frame)
+gui.F_Main.frmMain.caption("")
+gui.F_Main.frmMain.parent("frmlowerhalf")
+gui.F_Main.frmMain.size(3180,1515)
+gui.F_Main.frmMain.position(11790,125)
+gui.F_Main.frmMain.visible(True)
+gui.F_Main.frmMain.fontname("Arial")
+gui.F_Main.frmMain.fontsize(8)
+gui.F_Main.frmFilter.create(frame)
+gui.F_Main.frmFilter.caption("Filters")
+gui.F_Main.frmFilter.parent("frmlowerhalf")
+gui.F_Main.frmFilter.size(9870,1380)
+gui.F_Main.frmFilter.position(1845,165)
+gui.F_Main.frmFilter.visible(True)
+gui.F_Main.frmFilter.fontname("Arial")
+gui.F_Main.frmFilter.fontsize(8)
+gui.F_Main.frmEditView.create(frame)
+gui.F_Main.frmEditView.caption("Purchase Order:")
+gui.F_Main.frmEditView.parent("frmfilter")
+gui.F_Main.frmEditView.size(1470,750)
+gui.F_Main.frmEditView.position(8205,300)
+gui.F_Main.frmEditView.visible(True)
+gui.F_Main.frmEditView.borderstyle(1)
+gui.F_Main.frmEditView.fontname("Arial")
+gui.F_Main.frmEditView.fontsize(8)
+gui.F_Main.fgPur.create(gsflexgrid)
+gui.F_Main.fgPur.FixedRows(0)
+gui.F_Main.fgPur.FixedCols(0)
+gui.F_Main.fgPur.visible(True)
+gui.F_Main.fgPur.size(16350,4485)
+gui.F_Main.fgPur.zorder(0)
+gui.F_Main.fgPur.position(55,60)
+gui.F_Main.fgPur.enabled(True)
+gui.F_Main.fgPur.event(mouseup,fgpur_mouseup)
+gui.F_Main.fgPur.event(posttextmatrix,fgpur_posttextmatrix)
+gui.F_Main.fgPur.event(cellenter,fgpur_cellenter)
+gui.F_Main.cmdRefresh.create(button)
+gui.F_Main.cmdRefresh.caption("Refresh")
+gui.F_Main.cmdRefresh.visible(True)
+gui.F_Main.cmdRefresh.size(2940,375)
+gui.F_Main.cmdRefresh.zorder(0)
+gui.F_Main.cmdRefresh.position(105,200)
+gui.F_Main.cmdRefresh.enabled(True)
+gui.F_Main.cmdRefresh.parent("frmmain")
+gui.F_Main.cmdRefresh.fontname("Arial")
+gui.F_Main.cmdRefresh.fontsize(8)
+gui.F_Main.cmdRefresh.event(click,E_cmdRefresh_Click)
+gui.F_Main.cmdRefresh.defaultvalue("")
+gui.F_Main.cmdRefresh.controlgroup(0)
+gui.F_Main.prgLoad.create(progressbar)
+gui.F_Main.prgLoad.visible(True)
+gui.F_Main.prgLoad.size(10000,600)
+gui.F_Main.prgLoad.zorder(0)
+gui.F_Main.prgLoad.position(600,2900)
+gui.F_Main.prgLoad.enabled(True)
+gui.F_Main.cmdExportExcel.create(button)
+gui.F_Main.cmdExportExcel.caption("Export to Excel")
+gui.F_Main.cmdExportExcel.visible(True)
+gui.F_Main.cmdExportExcel.size(2940,375)
+gui.F_Main.cmdExportExcel.zorder(0)
+gui.F_Main.cmdExportExcel.position(105,610)
+gui.F_Main.cmdExportExcel.enabled(True)
+gui.F_Main.cmdExportExcel.parent("frmmain")
+gui.F_Main.cmdExportExcel.fontname("Arial")
+gui.F_Main.cmdExportExcel.fontsize(8)
+gui.F_Main.cmdExportExcel.event(click,E_cmdExportExcel_Click)
+gui.F_Main.cmdExportExcel.defaultvalue("")
+gui.F_Main.cmdExportExcel.controlgroup(0)
+gui.F_Main.cmdExportOO.create(button)
+gui.F_Main.cmdExportOO.caption("Export to Open Office")
+gui.F_Main.cmdExportOO.visible(True)
+gui.F_Main.cmdExportOO.size(2940,375)
+gui.F_Main.cmdExportOO.zorder(0)
+gui.F_Main.cmdExportOO.position(105,1050)
+gui.F_Main.cmdExportOO.enabled(True)
+gui.F_Main.cmdExportOO.parent("frmmain")
+gui.F_Main.cmdExportOO.fontname("Arial")
+gui.F_Main.cmdExportOO.fontsize(8)
+gui.F_Main.cmdExportOO.event(click,E_cmdExportOO_Click)
+gui.F_Main.cmdExportOO.defaultvalue("")
+gui.F_Main.cmdExportOO.controlgroup(0)
+gui.F_Main.lblRefresh.create(label,"lblRefresh",True,1635,705,1,85,210,True,2,Arial,10,-2147483633,0)
+gui.F_Main.lblRefresh.parent("frmlowerhalf")
+gui.F_Main.lblRefresh.fontstyle(True,False,False,False)
+gui.F_Main.lblRefresh.defaultvalue("")
+gui.F_Main.lblRefresh.controlgroup(0)
+gui.F_Main.lblLoadMsg.create(label,"lblLoadMsg",True,10680,3375,1,2600,1500,True,2,Arial,16,-2147483633,0)
+gui.F_Main.lblLoadMsg.fontstyle(True,False,False,False)
+gui.F_Main.lblLoadMsg.defaultvalue("")
+gui.F_Main.lblLoadMsg.controlgroup(0)
+gui.F_Main.txtFVend.create(textbox,"",True,3090,300,0,170,425,False,0,Arial,8,-2147483643,1)
+gui.F_Main.txtFVend.parent("frmfilter")
+gui.F_Main.txtFVend.defaultvalue("")
+gui.F_Main.txtFVend.controlgroup(0)
+gui.F_Main.cmdFVend.create(button)
+gui.F_Main.cmdFVend.caption("^")
+gui.F_Main.cmdFVend.visible(True)
+gui.F_Main.cmdFVend.size(330,300)
+gui.F_Main.cmdFVend.zorder(0)
+gui.F_Main.cmdFVend.position(3245,410)
+gui.F_Main.cmdFVend.enabled(True)
+gui.F_Main.cmdFVend.parent("frmfilter")
+gui.F_Main.cmdFVend.fontname("Arial")
+gui.F_Main.cmdFVend.fontsize(8)
+gui.F_Main.cmdFVend.event(click,cmdfvend_click)
+gui.F_Main.cmdFVend.defaultvalue("")
+gui.F_Main.cmdFVend.controlgroup(0)
+gui.F_Main.txtFPL.create(textbox,"",True,630,300,0,3835,415,False,0,Arial,8,-2147483643,1)
+gui.F_Main.txtFPL.parent("frmfilter")
+gui.F_Main.txtFPL.defaultvalue("")
+gui.F_Main.txtFPL.controlgroup(0)
+gui.F_Main.cmdFPL.create(button)
+gui.F_Main.cmdFPL.caption("^")
+gui.F_Main.cmdFPL.visible(True)
+gui.F_Main.cmdFPL.size(330,300)
+gui.F_Main.cmdFPL.zorder(0)
+gui.F_Main.cmdFPL.position(4475,410)
+gui.F_Main.cmdFPL.enabled(True)
+gui.F_Main.cmdFPL.parent("frmfilter")
+gui.F_Main.cmdFPL.fontname("Arial")
+gui.F_Main.cmdFPL.fontsize(8)
+gui.F_Main.cmdFPL.event(click,cmdfpl_click)
+gui.F_Main.cmdFPL.defaultvalue("")
+gui.F_Main.cmdFPL.controlgroup(0)
+gui.F_Main.chkFVend.create(checkbox)
+gui.F_Main.chkFVend.caption("Vendor:")
+gui.F_Main.chkFVend.visible(True)
+gui.F_Main.chkFVend.size(1125,255)
+gui.F_Main.chkFVend.zorder(0)
+gui.F_Main.chkFVend.position(200,175)
+gui.F_Main.chkFVend.enabled(True)
+gui.F_Main.chkFVend.alignment(0)
+gui.F_Main.chkFVend.parent("frmfilter")
+gui.F_Main.chkFVend.fontname("Arial")
+gui.F_Main.chkFVend.fontsize(8)
+gui.F_Main.chkFVend.defaultvalue("")
+gui.F_Main.chkFVend.controlgroup(0)
+gui.F_Main.chkFPL.create(checkbox)
+gui.F_Main.chkFPL.caption("Prod. Line:")
+gui.F_Main.chkFPL.visible(True)
+gui.F_Main.chkFPL.size(1065,255)
+gui.F_Main.chkFPL.zorder(0)
+gui.F_Main.chkFPL.position(3865,145)
+gui.F_Main.chkFPL.enabled(True)
+gui.F_Main.chkFPL.alignment(0)
+gui.F_Main.chkFPL.parent("frmfilter")
+gui.F_Main.chkFPL.fontname("Arial")
+gui.F_Main.chkFPL.fontsize(8)
+gui.F_Main.chkFPL.defaultvalue("")
+gui.F_Main.chkFPL.controlgroup(0)
+gui.F_Main.chkFCutOff.create(checkbox)
+gui.F_Main.chkFCutOff.caption("CutOff Date:")
+gui.F_Main.chkFCutOff.visible(True)
+gui.F_Main.chkFCutOff.size(1275,255)
+gui.F_Main.chkFCutOff.zorder(0)
+gui.F_Main.chkFCutOff.position(3240,790)
+gui.F_Main.chkFCutOff.enabled(True)
+gui.F_Main.chkFCutOff.alignment(0)
+gui.F_Main.chkFCutOff.parent("frmfilter")
+gui.F_Main.chkFCutOff.fontname("Arial")
+gui.F_Main.chkFCutOff.fontsize(8)
+gui.F_Main.chkFCutOff.defaultvalue("")
+gui.F_Main.chkFCutOff.controlgroup(0)
+gui.F_Main.optView.create(option)
+gui.F_Main.optView.caption("View")
+gui.F_Main.optView.visible(True)
+gui.F_Main.optView.size(750,255)
+gui.F_Main.optView.zorder(0)
+gui.F_Main.optView.position(95,185)
+gui.F_Main.optView.enabled(True)
+gui.F_Main.optView.alignment(0)
+gui.F_Main.optView.parent("frmeditview")
+gui.F_Main.optView.fontname("Arial")
+gui.F_Main.optView.fontsize(8)
+gui.F_Main.optView.defaultvalue("")
+gui.F_Main.optView.controlgroup(0)
+gui.F_Main.optEdit.create(option)
+gui.F_Main.optEdit.caption("Edit")
+gui.F_Main.optEdit.visible(True)
+gui.F_Main.optEdit.size(570,255)
+gui.F_Main.optEdit.zorder(0)
+gui.F_Main.optEdit.position(85,435)
+gui.F_Main.optEdit.enabled(True)
+gui.F_Main.optEdit.alignment(0)
+gui.F_Main.optEdit.parent("frmeditview")
+gui.F_Main.optEdit.fontname("Arial")
+gui.F_Main.optEdit.fontsize(8)
+gui.F_Main.optEdit.defaultvalue("")
+gui.F_Main.optEdit.controlgroup(0)
+gui.F_Main.dtpCutOff.create(datepicker)
+gui.F_Main.dtpCutOff.visible(True)
+gui.F_Main.dtpCutOff.size(1335,300)
+gui.F_Main.dtpCutOff.zorder(0)
+gui.F_Main.dtpCutOff.position(3245,1020)
+gui.F_Main.dtpCutOff.enabled(True)
+gui.F_Main.dtpCutOff.parent("frmfilter")
+gui.F_Main.dtpCutOff.checkbox(False)
+gui.F_Main.dtpCutOff.defaultvalue("")
+gui.F_Main.dtpCutOff.controlgroup(0)
+gui.F_Main.chkFPart.create(checkbox)
+gui.F_Main.chkFPart.caption("Part:")
+gui.F_Main.chkFPart.visible(True)
+gui.F_Main.chkFPart.size(1485,210)
+gui.F_Main.chkFPart.zorder(0)
+gui.F_Main.chkFPart.position(195,790)
+gui.F_Main.chkFPart.enabled(True)
+gui.F_Main.chkFPart.alignment(0)
+gui.F_Main.chkFPart.parent("frmfilter")
+gui.F_Main.chkFPart.fontname("Arial")
+gui.F_Main.chkFPart.fontsize(8)
+gui.F_Main.chkFPart.defaultvalue("")
+gui.F_Main.chkFPart.controlgroup(0)
+gui.F_Main.txtFPart.create(textbox,"",True,2235,300,0,200,990,True,0,Arial,8,-2147483643,1)
+gui.F_Main.txtFPart.parent("frmfilter")
+gui.F_Main.txtFPart.defaultvalue("")
+gui.F_Main.txtFPart.controlgroup(0)
+gui.F_Main.cmdFPart.create(button)
+gui.F_Main.cmdFPart.caption("^")
+gui.F_Main.cmdFPart.visible(True)
+gui.F_Main.cmdFPart.size(330,300)
+gui.F_Main.cmdFPart.zorder(0)
+gui.F_Main.cmdFPart.position(2415,985)
+gui.F_Main.cmdFPart.enabled(True)
+gui.F_Main.cmdFPart.parent("frmfilter")
+gui.F_Main.cmdFPart.fontname("Arial")
+gui.F_Main.cmdFPart.fontsize(8)
+gui.F_Main.cmdFPart.event(click,cmdfpart_click)
+gui.F_Main.cmdFPart.defaultvalue("")
+gui.F_Main.cmdFPart.controlgroup(0)
+gui.F_Main.chkFVend.tabstop(True)
+gui.F_Main.chkFVend.tabindex(1)
+gui.F_Main.cmdFVend.tabstop(True)
+gui.F_Main.cmdFVend.tabindex(2)
+gui.F_Main.chkFPL.tabstop(True)
+gui.F_Main.chkFPL.tabindex(3)
+gui.F_Main.cmdFPL.tabstop(True)
+gui.F_Main.cmdFPL.tabindex(4)
+gui.F_Main.chkFPart.tabstop(True)
+gui.F_Main.chkFPart.tabindex(7)
+gui.F_Main.chkFCutOff.tabstop(True)
+gui.F_Main.chkFCutOff.tabindex(9)
+gui.F_Main.dtpCutOff.tabstop(True)
+gui.F_Main.dtpCutOff.tabindex(10)
+gui.F_Main.optView.tabstop(True)
+gui.F_Main.optView.tabindex(11)
+gui.F_Main.optEdit.tabstop(True)
+gui.F_Main.optEdit.tabindex(12)
+gui.F_Main.cmdRefresh.tabstop(True)
+gui.F_Main.cmdRefresh.tabindex(13)
+gui.F_Main.cmdExportExcel.tabstop(True)
+gui.F_Main.cmdExportExcel.tabindex(14)
+gui.F_Main.cmdExportOO.tabstop(True)
+gui.F_Main.cmdExportOO.tabindex(15)
+gui.F_Main.cmdFPart.tabstop(True)
+gui.F_Main.cmdFPart.tabindex(54)
+
+
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+
+
+Variable.Global.sOldValue.Declare(String)
+Variable.Global.iOldRow.Declare(Long,0)
+Variable.Global.iOldLength.Declare(Long,0)
+Variable.Global.iRowCount.Declare(Long,0)
+Variable.Global.bViewAll.Declare(Boolean,False)
+Variable.Global.iColor.Declare(Long,0)
+Variable.Global.sHeader.Declare(String)
+Variable.Global.sSqlPopulate.Declare(String)
+Variable.Global.fProgBarValue.Declare(Float,0)
+Variable.Global.iTimerVal.Declare(Long,0)
+Variable.Global.iCol.Declare(Long,0)
+Variable.Global.bSort.Declare(Boolean,True)
+
+Variable.Global.dToday.Declare(Date,1/1/2000)
+Variable.Global.iColItem.Declare(Long,0)
+Variable.Global.bSortItem.Declare(Boolean,True)
+Variable.Global.sSortItem.Declare(String,"True")
+Variable.Global.iSortItem.Declare(Long,1)
+Variable.Global.iPart.Declare(Long,0)
+Variable.Global.iCust.Declare(Long,0)
+Variable.Global.iShip.Declare(Long,0)
+Variable.UDT.uData.Define("PURCHASE_ORDER",String,PURCHASE_ORDER)
+Variable.UDT.uData.Define("RECORD_NO",String,RECORD_NO)
+Variable.UDT.uData.Define("NAME_VENDOR",String,NAME_VENDOR)
+Variable.UDT.uData.Define("PART",String,PART)
+Variable.UDT.uData.Define("LOCATION",String,LOCATION)
+Variable.UDT.uData.Define("DESCRIPTION",String,DESCRIPTION)
+Variable.UDT.uData.Define("PRODUCT_LINE",String,PRODUCT_LINE)
+Variable.UDT.uData.Define("DATE_DUE_LINE",Date,DATE_DUE_LINE)
+Variable.UDT.uData.Define("QTY_ORDER",Float,QTY_ORDER)
+Variable.UDT.uData.Define("QTY_RECEIVED",Float,QTY_RECEIVED)
+Variable.UDT.uData.Define("QTY_OPEN",Float,QTY_OPEN)
+Variable.UDT.uData.Define("QTY_RECD_NOT_INSP",Float,QTY_RECD_NOT_INSP)
+Variable.UDT.uData.Define("USER_5",String,USER_5)
+Variable.UDT.uData.Define("ROW",Long)
+Variable.uGlobal.uData.Declare("uData")
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+'Coded by:  RRC
+'Project Start Date:  12/26/2013
+'Customer:  (Mike Melzer)
+'ProjectName:  Purchase Order Review
+'Notes:
+'    Script Allows user to Change/Update User_5 Field on Purchase Order Lines
+'    Either ALL PO can be viewed, or a menu option with View User ONLY can be setup.
+'    User in the EDIT group is needed to enable the Edit Checkbox
+'Hooks:					
+'    Non Required
+
+'VERSION:
+'    See Global Variable sVersion for Setting/Viewing Current Script Version
+
+V.Global.sVersion.Declare(String,"001")
+F.ODBC.Connection!Conx.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass,120)
+
+V.Global.dToday.Set(V.Ambient.Date)
+
+
+Gui.F_Main.optView.Value("True")
+
+F.Intrinsic.Control.CallSub(Cmdok_click)
+
+Program.Sub.Main.End
+
+Program.Sub.subExit.Start
+
+'The Exit Sub
+
+
+F.ODBC.Connection!Conx.Close
+F.Intrinsic.Control.End
+
+
+
+Program.Sub.subExit.End
+
+Program.Sub.E_cmdRefresh_Click.Start
+
+'View/Refresh Button Pressed
+
+F.Intrinsic.Control.CallSub("subSetup_Screen")
+
+
+Program.Sub.E_cmdRefresh_Click.End
+
+Program.Sub.E_cmdExportExcel_Click.Start
+
+'Export Flex Grid to Microsoft Excel
+
+'Set Export Type to 1 for Excel
+F.Intrinsic.Control.CallSub("subExport_fgPur","iExportType",1)
+
+Program.Sub.E_cmdExportExcel_Click.End
+
+Program.Sub.E_cmdExportOO_Click.Start
+
+'Export Flex Grid to Open Office
+
+'Set Export Type to 0 for Open Office
+F.Intrinsic.Control.CallSub("subExport_fgPur","iExportType",0)
+
+
+Program.Sub.E_cmdExportOO_Click.End
+
+Program.Sub.subExport_fgPur.Start
+F.Intrinsic.Control.SetErrorHandler("subExport_fgPur_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Sub used to Export the Flex Grid to either Excel or Open Office Depending on what Button the User Presses
+
+'Declare Local Variable for Storing Save Path
+V.Local.sFPath.Declare(String)
+V.Local.sFPath.Set("")
+V.Local.sMessage.Declare(String)
+V.Local.iResponse.Declare(Long)
+V.Local.iHandle.Declare(Long)
+V.Local.iHandle.Set(0)
+V.Local.iExportType.Declare(Long,-1)
+
+'Load Passed iExportType Variable
+V.Local.iExportType.Set(V.Args.iExportType)
+
+'Display the Save Dialog
+F.Intrinsic.UI.ShowSaveFileDialog("","xls|*.xls",,V.Local.sFPath)
+
+'If User did not hit the Cancel button on the Save File Dialog, then Attempt to Export/Save the File
+F.Intrinsic.Control.If(V.Local.sFPath,<>,"***CANCEL***")
+	'Path NOT Blank (User did Not Cancel the Save)
+	
+	'Disable Flex Grid During Save
+	'Lock the GUI During Save
+	Gui.F_Main..Enabled(False)
+	Gui.F_Main.fgPur.Visible(False)
+
+	'Try To Save the File
+	Gui.F_Main.lblLoadMsg.Caption("Saving....  This may take up to a minute depending on the amount of Data in the Grid.  Please be patient...")
+	Gui.F_Main.lblLoadMsg.Visible(true)
+	Gui.F_Main.fgPur.Export(V.Local.sFPath,V.Local.iExportType)
+	Gui.F_Main.lblLoadMsg.Visible(False)
+	
+	'File Saved Successfully
+	'Create Message to Display
+	'Ask user if they want to Open the File NOW?
+	F.Intrinsic.String.Concat("The data was exported successfully to:",V.Ambient.NewLine,V.local.sFPath,V.ambient.newline,V.ambient.newline,"Do you want to open this file Now?",V.Local.sMessage)
+	F.Intrinsic.UI.Msgbox(V.Local.sMessage,"File Saved Successfully",4,V.Local.iResponse)
+
+	'Responses
+	'6 = YES
+	'7 = NO
+
+	F.Intrinsic.Control.If(V.Local.iResponse,=,6)
+		'User Said YES
+		'Try to Open the File
+		F.Intrinsic.Task.ShellExec(V.Local.iHandle,"open",V.Local.sFPath,,,0)
+	F.Intrinsic.Control.EndIf
+	
+	'Re-Enable the Flex Grid after Save
+	'UnLock the GUI After Save
+	Gui.F_Main..Enabled(True)
+	Gui.F_Main.fgPur.Visible(True)
+
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("subExport_fgPur_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GAB_PU_PurchaseReview.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.subExport_fgPur.End
+
+Program.Sub.subSetup_Screen.Start
+F.Intrinsic.Control.SetErrorHandler("subSetup_Screen_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Sub called when View/Refresh is Clicked...
+'Clear the Screen/Variables and Walk through the Load Process
+V.Local.bEditGrp.Declare(Boolean)
+'Disable the Flex Grid while loading...
+Gui.F_Main.fgPur.Enabled(False)
+Gui.F_Main.fgPur.Visible(False)
+
+'Disable the GUI
+Gui.F_Main..Enabled(False)
+
+'Reset Progress Load Bar
+Gui.F_Main.prgLoad.Value(1)
+Gui.F_Main.prgLoad.Visible(True)
+
+'Disbale lblLoadMsg
+Gui.F_Main.lblLoadMsg.Visible(False)
+
+
+
+'Clear Refresh Stats while Loading
+Gui.F_Main..Caption(V.Global.sHeader)
+Gui.F_Main.lblRefresh.Caption("")
+
+'Check if the User is in EDIT Group, to enable the Edit button to edit SO
+F.Global.Security.IsInGroup(V.Caller.User,"EDIT",V.Local.bEditGrp)
+F.Intrinsic.Control.If(V.Local.bEditGrp,=,"False")
+	Gui.F_Main.optEdit.Enabled(0)
+F.Intrinsic.Control.Else
+	Gui.F_Main.optEdit.Enabled(1)
+F.Intrinsic.Control.EndIf
+
+'Make GUI Visible (if its not Already)
+Gui.F_Main..Visible(True)
+
+'Generate SQL Statements for Pulling Data (Based on Current Settings Selected on the Form)
+F.Intrinsic.Control.CallSub("subGenerate_SqlStatements")
+
+'%%%% UPDATE PROGRESS BAR %%%%
+V.Global.fProgBarValue.Set(5)
+Gui.F_Main.prgLoad.Value(V.Global.fProgBarValue)
+'%%%% UPDATE PROGRESS BAR %%%%
+
+'Load BuildStyles for fgPur Flex Grid
+F.Intrinsic.Control.CallSub("subBuildStyles_fg")
+
+'%%%% UPDATE PROGRESS BAR %%%%
+V.Global.fProgBarValue.Set(10)
+Gui.F_Main.prgLoad.Value(V.Global.fProgBarValue)
+'%%%% UPDATE PROGRESS BAR %%%%
+
+'Load Data into fgPur Flex Grid
+F.Intrinsic.Control.CallSub("subLoad_fgPur")
+
+
+'%%%% UPDATE PROGRESS BAR %%%%
+V.Global.fProgBarValue.Set(100)
+Gui.F_Main.prgLoad.Value(V.Global.fProgBarValue)
+'%%%% UPDATE PROGRESS BAR %%%%
+
+'Update/Display Last Refresh
+V.Local.sTempDateTime.Declare(String,"")
+V.Local.sTempHeader.Declare(String)
+V.Local.sTempHeader.Set(V.Global.sHeader)
+
+F.Intrinsic.String.Concat(V.Local.sTempDateTime,"    ****LAST REFRESH AT: ",V.Ambient.Time," --- ON: ",V.Ambient.Date,"****",V.Local.sTempDateTime)
+F.Intrinsic.String.Concat(V.Local.sTempHeader,V.Local.sTempDateTime,V.Local.sTempHeader)
+Gui.F_Main..Caption(V.Local.sTempHeader)
+
+F.Intrinsic.String.Concat("LAST REFRESH: ",V.ambient.newline,V.Ambient.Time,V.Ambient.NewLine,V.Ambient.Date,V.Local.sTempDateTime)
+Gui.F_Main.lblRefresh.Caption(V.Local.sTempDateTime)
+
+'Re-Enable Flex Grid and GUI
+Gui.F_Main.prgLoad.Visible(False)
+Gui.F_Main.fgPur.Visible(True)
+Gui.F_Main.fgPur.Enabled(True)
+Gui.F_Main..Enabled(True)
+
+'Set Focus on cmdRefresh button after Initial Load
+Gui.F_Main.cmdRefresh.SetFocus
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("subSetup_Screen_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GAB_PU_PurchaseReview.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.subSetup_Screen.End
+
+Program.Sub.subGenerate_SqlStatements.Start
+'Define SQL Statements for Pulling Data from Global Shop
+
+
+'sSQLPopulate
+
+V.Global.sSqlPopulate.Set("Select VPL.PURCHASE_ORDER, LEFT(RECORD_NO,3) AS RECORD_NO, VPVB.NAME_VENDOR, VPL.PART, VPL.LOCATION, VPL.DESCRIPTION, VPL.PRODUCT_LINE,")
+F.Intrinsic.String.Concat(V.Global.sSqlPopulate,"VPL.DATE_DUE_LINE, VPL.QTY_ORDER, VPL.QTY_RECEIVED, (VPL.QTY_ORDER-VPL.QTY_RECEIVED) AS QTY_OPEN, VPL.QTY_RECD_NOT_INSP, VPL.USER_5 ",V.Global.sSqlPopulate)
+F.Intrinsic.String.Concat(V.Global.sSqlPopulate,"From V_PO_LINES VPL LEFT JOIN V_PO_VENDOR_BUY VPVB ON VPL.PURCHASE_ORDER=VPVB.PURCHASE_ORDER ",V.Global.sSqlPopulate)
+F.Intrinsic.String.Concat(V.Global.sSqlPopulate,"Where FLAG_RECV_CLOSE <> 'Y' And QTY_OPEN >=0",V.Global.sSqlPopulate)
+
+
+Program.Sub.subGenerate_SqlStatements.End
+
+Program.Sub.subGenerate_RowNumbers.Start
+F.Intrinsic.Control.SetErrorHandler("subGenerate_RowNumbers_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Sub used to Generate Sequential Row Numbers for the Grid
+
+'Declare Local Variable
+V.Local.iCount.Declare(Long)
+V.Local.iRow.Declare(Long)
+
+F.Intrinsic.Control.For(V.Local.iCount,0,V.uGlobal.uData.UBound,1)
+	F.Intrinsic.Math.Add(V.Local.iCount,1,V.Local.iRow)
+	V.uGlobal.uData(v.Local.iCount)!Row.Set(V.Local.iRow)
+F.Intrinsic.Control.Next(V.Local.iCount)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("subGenerate_RowNumbers_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GAB_PU_PurchaseReview.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.subGenerate_RowNumbers.End
+
+program.sub.cmdok_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdok_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Gui.F_Date..Visible(False)
+
+'***************CHART/TABLE COLORS****************
+'Define the 5 Colors for Pi Charts and Table
+V.Global.iColor.redim(0,4)
+V.Global.iColor(0).Set(V.Color.Blue)
+V.Global.iColor(1).Set(V.Color.Yellow)
+V.Global.iColor(2).Set(V.Color.Red)
+V.Global.iColor(3).Set(V.Color.Green)
+V.Global.iColor(4).Set(V.Color.Grey)
+'**********************************************************
+
+
+
+'-----------------------------SETUP THE FORM----------------------------------
+'Hide the Progress Bar
+V.Global.fProgBarValue.Set(0)
+Gui.F_Main.prgLoad.Value(V.Global.fProgBarValue)
+Gui.F_Main.prgLoad.Visible(False)
+
+'Assign Special Colors to MsgBoxes
+Gui.F_Main.lblLoadMsg.Caption("If you want this script to Load your Data Automatically upon Start, please check the 'Auto Load Data on Next Script Start' option below.  Otherwise, click the 'View/Refresh' button below to load your Data now.")
+Gui.F_Main.lblLoadMsg.ForeColor(V.Color.Blue)
+
+'Hide Refresh Frame
+Gui.F_Main.lblRefresh.Caption("")
+
+'-----------------------------------------------
+
+'Determine which Mode the Script should run in View ALL or View User Mode
+'V.Local.sHeader.Declare(String)
+V.Global.sHeader.Set("Purchase Order Review - Version: ")
+F.Intrinsic.String.Concat(V.Global.sHeader,V.Global.sVersion,V.Global.sHeader)
+
+'Update Form Caption
+Gui.F_Main..Caption(V.Global.sHeader)
+
+
+Gui.F_Main.cmdRefresh.Enabled(True)
+
+F.Intrinsic.Control.CallSub("subSetup_Screen")
+
+'Show the Main Form
+Gui.F_Main..Enabled(True)
+Gui.F_Main..Visible(True)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdok_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GAB_PU_PurchaseReview.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmdok_click.end
+
+Program.Sub.subSort.Start
+F.Intrinsic.Control.SetErrorHandler("subSort_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+Gui.F_Main.fgPur.Visible(False)
+'
+F.Intrinsic.Control.If(V.Args.col.trim,<>,V.Global.iCol.Trim)
+	V.Global.iCol.Set(V.Args.col.Trim)
+	V.Global.bSort.Set(False)
+F.Intrinsic.Control.Else
+	F.Intrinsic.Control.If(V.Global.bSort,=,False)
+		V.Global.bSort.Set(True)
+	F.Intrinsic.Control.Else
+		V.Global.bSort.Set(False)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.SelectCase(V.Args.col)
+
+F.Intrinsic.Control.Case(1)
+	F.Intrinsic.Control.If(V.Global.bSort,=,False)
+		F.Intrinsic.Variable.UDTMultiQuickSort(V.uGlobal.uData!PURCHASE_ORDER,0,V.uGlobal.uData!RECORD_NO,0)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.Variable.UDTMultiQuickSort(V.uGlobal.uData!PURCHASE_ORDER,1,V.uGlobal.uData!RECORD_NO,1)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Case(2)
+	F.Intrinsic.Control.If(V.Global.bSort,=,False)
+		F.Intrinsic.Variable.UDTMultiQuickSort(V.uGlobal.uData!RECORD_NO,0)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.Variable.UDTMultiQuickSort(V.uGlobal.uData!RECORD_NO,1)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Case(3)
+	F.Intrinsic.Control.If(V.Global.bSort,=,False)
+		F.Intrinsic.Variable.UDTMultiQuickSort(V.uGlobal.uData!NAME_VENDOR,0)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.Variable.UDTMultiQuickSort(V.uGlobal.uData!NAME_VENDOR,1)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Case(4)
+	F.Intrinsic.Control.If(V.Global.bSort,=,False)
+		F.Intrinsic.Variable.UDTMultiQuickSort(V.uGlobal.uData!PART,0)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.Variable.UDTMultiQuickSort(V.uGlobal.uData!PART,1)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Case(5)
+	F.Intrinsic.Control.If(V.Global.bSort,=,False)
+		F.Intrinsic.Variable.UDTMultiQuickSort(V.uGlobal.uData!LOCATION,0)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.Variable.UDTMultiQuickSort(V.uGlobal.uData!LOCATION,1)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Case(6)
+	F.Intrinsic.Control.If(V.Global.bSort,=,False)
+		F.Intrinsic.Variable.UDTMultiQuickSort(V.uGlobal.uData!DESCRIPTION,0)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.Variable.UDTMultiQuickSort(V.uGlobal.uData!DESCRIPTION,1)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Case(7)
+	F.Intrinsic.Control.If(V.Global.bSort,=,False)
+		F.Intrinsic.Variable.UDTMultiQuickSort(V.uGlobal.uData!PRODUCT_LINE,0)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.Variable.UDTMultiQuickSort(V.uGlobal.uData!PRODUCT_LINE,1)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Case(8)
+	F.Intrinsic.Control.If(V.Global.bSort,=,False)
+		F.Intrinsic.Variable.UDTMultiQuickSort(V.uGlobal.uData!DATE_DUE_LINE,0)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.Variable.UDTMultiQuickSort(V.uGlobal.uData!DATE_DUE_LINE,1)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Case(9)
+	F.Intrinsic.Control.If(V.Global.bSort,=,False)
+		F.Intrinsic.Variable.UDTMultiQuickSort(V.uGlobal.uData!QTY_ORDER,0)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.Variable.UDTMultiQuickSort(V.uGlobal.uData!QTY_ORDER,1)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Case(10)
+	F.Intrinsic.Control.If(V.Global.bSort,=,False)
+		F.Intrinsic.Variable.UDTMultiQuickSort(V.uGlobal.uData!QTY_RECEIVED,0)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.Variable.UDTMultiQuickSort(V.uGlobal.uData!QTY_RECEIVED,1)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Case(11)
+	F.Intrinsic.Control.If(V.Global.bSort,=,False)
+		F.Intrinsic.Variable.UDTMultiQuickSort(V.uGlobal.uData!QTY_OPEN,0)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.Variable.UDTMultiQuickSort(V.uGlobal.uData!QTY_OPEN,1)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Case(12)
+	F.Intrinsic.Control.If(V.Global.bSort,=,False)
+		F.Intrinsic.Variable.UDTMultiQuickSort(V.uGlobal.uData!QTY_RECD_NOT_INSP,0)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.Variable.UDTMultiQuickSort(V.uGlobal.uData!QTY_RECD_NOT_INSP,1)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Case(13)
+	F.Intrinsic.Control.If(V.Global.bSort,=,False)
+		F.Intrinsic.Variable.UDTMultiQuickSort(V.uGlobal.uData!USER_5,0)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.Variable.UDTMultiQuickSort(V.uGlobal.uData!USER_5,1)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndSelect
+
+F.Intrinsic.Control.CallSub(Subgenerate_rownumbers)
+Gui.F_Main.fgPur.LoadFromUDT("V.uGlobal.uData","ROW::0*!*PURCHASE_ORDER::1*!*RECORD_NO::2*!*NAME_VENDOR::3*!*PART::4*!*LOCATION::5*!*DESCRIPTION::6*!*PRODUCT_LINE::7*!*DATE_DUE_LINE::8*!*QTY_ORDER::9*!*QTY_RECEIVED::10*!*QTY_OPEN::11*!*QTY_RECD_NOT_INSP::12*!*USER_5::13",2)
+F.Intrinsic.Control.CallSub(Subrowstyles)
+
+Gui.F_Main.fgPur.Visible(True)
+Gui.F_Main.cmdRefresh.Enabled(True)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("subSort_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GAB_PU_PurchaseReview.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.subSort.End
+
+program.sub.cmdfpl_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdfpl_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+V.Local.sTitles.Declare(String)
+V.Local.iWidths.Declare(Long)
+V.Local.sRet.Declare(String)
+
+F.Intrinsic.String.Split("PL*!*Description*!*Name","*!*",V.Local.sTitles)
+F.Intrinsic.String.Split("750*!*1300*!*2900","*!*",V.Local.iWidths)
+
+F.Intrinsic.UI.MiniBrowser("Select a Product Line",conx,"Select PRODUCT_LINE, PRODUCT_LINE_DESC, PRODUCT_LINE_NAME from V_PRODUCT_LINE Order by PRODUCT_LINE",V.Local.sTitles,V.Local.iWidths,V.Local.sRet)
+
+F.Intrinsic.Control.If(V.Local.sRet,"=","***CANCEL***")
+	F.Intrinsic.UI.Msgbox("No Product Line was selected")
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.F_Main.txtFPL.Text(V.Local.sRet(0))
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdfpl_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GAB_PU_PurchaseReview.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmdfpl_click.end
+
+Program.Sub.subFilters.Start
+F.Intrinsic.Control.SetErrorHandler("subFilters_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+V.Local.iC.Declare(Long)
+
+F.Intrinsic.Control.If(V.Screen.F_Main!chkFVend.Value,=,1)
+	F.Intrinsic.Variable.UDTFlagAll(V.uGlobal.uData)
+	F.Intrinsic.Variable.UDTMultiUnFlag(V.uGlobal.uData!NAME_VENDOR,V.Screen.F_Main!txtFVend.Text)
+	F.Intrinsic.Variable.UDTDeleteFlagged(V.uGlobal.uData)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.Screen.F_Main!chkFPL.Value,=,1)
+	F.Intrinsic.Variable.UDTFlagAll(V.uGlobal.uData)
+	F.Intrinsic.Variable.UDTMultiUnFlag(V.uGlobal.uData!PRODUCT_LINE,V.Screen.F_Main!txtFPL.Text)
+	F.Intrinsic.Variable.UDTDeleteFlagged(V.uGlobal.uData)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.Screen.F_Main!chkFPart.Value,=,1)
+	F.Intrinsic.Variable.UDTFlagAll(V.uGlobal.uData)
+	F.Intrinsic.Variable.UDTMultiUnFlag(V.uGlobal.uData!PART,V.Screen.F_Main!txtFPart.Text)
+	F.Intrinsic.Variable.UDTDeleteFlagged(V.uGlobal.uData)
+F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.If(V.Screen.F_Main!chkFCutOff.Value,=,1)
+	F.Intrinsic.Variable.UDTUnFlagAll(V.uGlobal.uData)
+	F.Intrinsic.Control.For(V.Local.iC,0,V.uGlobal.uData.UBound,1)
+		F.Intrinsic.Control.If(V.Screen.F_Main!dtpCutOff.Value,<,V.uGlobal.uData(V.Local.iC)!DATE_DUE_LINE)
+			F.Intrinsic.Variable.UDTMultiFlag(V.uGlobal.uData!DATE_DUE_LINE,V.uGlobal.uData(V.Local.iC)!DATE_DUE_LINE)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Next(V.Local.iC)
+	F.Intrinsic.Variable.UDTDeleteFlagged(V.uGlobal.uData)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("subFilters_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GAB_PU_PurchaseReview.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.subFilters.End
+
+Program.Sub.subBuildStyles_fg.Start
+
+'Define Build Styles for Flex Grid fgPur
+'Two major setups... Normal or Large Font
+'Depending on Font Size selection, Font, Column Widths and Row Height must be Adjusted
+
+'Declare/Define Default Font Size
+V.Local.iFontSize.Declare(Long,8)
+
+'Variable Used for Calculating Column Width (affected by Font Size)
+V.Local.fTempColWidth.Declare(Float,0)
+V.Local.fColWidthFactor.Declare(Float,1)
+V.Local.iCount.Declare(Long,0)
+
+'Define Number of Columns and Fixed Columns in Flex Grid
+'Fixed Column for Row Number
+Gui.F_Main.fgPur.Cols(14)
+Gui.F_Main.fgPur.FixedCols(1)
+
+
+'Temp Set Row Count to 2 (So that Column Header can be Defined)
+'If No Data is Found Latter... Rows will Remain at 1 for the Fixed Header
+Gui.F_Main.fgPur.Rows(2)
+Gui.F_Main.fgPur.FixedRows(1)
+
+'--------------------------CREATE BUILD STYLES FOR FLEX Grid ----------------------------
+
+Gui.F_Main.fgPur.TextMatrix(0,0,"")
+V.Local.fTempColWidth.Set(500)
+F.Intrinsic.Math.Mult(V.Local.fTempColWidth,V.Local.fColWidthFactor,V.Local.fTempColWidth)
+Gui.F_Main.fgPur.ColWidth(0,V.Local.fTempColWidth)
+Gui.F_Main.fgPur.BuildStyle(1,0,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(1,0,"fontstyle","bold",True)
+Gui.F_Main.fgPur.BuildStyle(1,0,"Format","alignment",4)
+Gui.F_Main.fgPur.BuildStyle(2,0,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(2,0,"fontstyle","size",V.Local.iFontSize)
+Gui.F_Main.fgPur.BuildStyle(2,0,"Format","alignment",4)
+
+Gui.F_Main.fgPur.TextMatrix(1,0,"PO #")
+V.Local.fTempColWidth.Set(750)
+F.Intrinsic.Math.Mult(V.Local.fTempColWidth,V.Local.fColWidthFactor,V.Local.fTempColWidth)
+Gui.F_Main.fgPur.ColWidth(1,V.Local.fTempColWidth)
+Gui.F_Main.fgPur.BuildStyle(1,1,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(1,1,"fontstyle","bold",True)
+Gui.F_Main.fgPur.BuildStyle(1,1,"Format","alignment",4)
+Gui.F_Main.fgPur.BuildStyle(2,1,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(2,1,"fontstyle","size",V.Local.iFontSize)
+Gui.F_Main.fgPur.BuildStyle(2,1,"fontstyle","underline",True)
+Gui.F_Main.fgPur.BuildStyle(2,1,"Format","alignment",4)
+Gui.F_Main.fgPur.BuildStyle(2,1,"Color","Fore",16711680)
+
+Gui.F_Main.fgPur.TextMatrix(2,0,"Ln")
+V.Local.fTempColWidth.Set(450)
+F.Intrinsic.Math.Mult(V.Local.fTempColWidth,V.Local.fColWidthFactor,V.Local.fTempColWidth)
+Gui.F_Main.fgPur.ColWidth(2,V.Local.fTempColWidth)
+Gui.F_Main.fgPur.BuildStyle(1,2,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(1,2,"fontstyle","bold",True)
+Gui.F_Main.fgPur.BuildStyle(1,2,"Format","alignment",4)
+Gui.F_Main.fgPur.BuildStyle(2,2,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(2,2,"fontstyle","size",V.Local.iFontSize)
+Gui.F_Main.fgPur.BuildStyle(2,2,"Format","alignment",4)
+
+Gui.F_Main.fgPur.TextMatrix(3,0,"Vendor Name")
+V.Local.fTempColWidth.Set(2300)
+F.Intrinsic.Math.Mult(V.Local.fTempColWidth,V.Local.fColWidthFactor,V.Local.fTempColWidth)
+Gui.F_Main.fgPur.ColWidth(3,V.Local.fTempColWidth)
+Gui.F_Main.fgPur.BuildStyle(1,3,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(1,3,"fontstyle","bold",True)
+Gui.F_Main.fgPur.BuildStyle(1,3,"Format","alignment",1)
+Gui.F_Main.fgPur.BuildStyle(2,3,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(2,3,"fontstyle","size",V.Local.iFontSize)
+Gui.F_Main.fgPur.BuildStyle(2,3,"Format","alignment",1)
+
+Gui.F_Main.fgPur.TextMatrix(4,0,"Part Number")
+V.Local.fTempColWidth.Set(1700)
+F.Intrinsic.Math.Mult(V.Local.fTempColWidth,V.Local.fColWidthFactor,V.Local.fTempColWidth)
+Gui.F_Main.fgPur.ColWidth(4,V.Local.fTempColWidth)
+Gui.F_Main.fgPur.BuildStyle(1,4,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(1,4,"fontstyle","bold",True)
+Gui.F_Main.fgPur.BuildStyle(1,4,"Format","alignment",1)
+Gui.F_Main.fgPur.BuildStyle(2,4,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(2,4,"fontstyle","size",V.Local.iFontSize)
+Gui.F_Main.fgPur.BuildStyle(2,4,"Format","alignment",1)
+
+Gui.F_Main.fgPur.TextMatrix(5,0,"Loc")
+V.Local.fTempColWidth.Set(400)
+F.Intrinsic.Math.Mult(V.Local.fTempColWidth,V.Local.fColWidthFactor,V.Local.fTempColWidth)
+Gui.F_Main.fgPur.ColWidth(5,V.Local.fTempColWidth)
+Gui.F_Main.fgPur.BuildStyle(1,5,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(1,5,"fontstyle","bold",True)
+Gui.F_Main.fgPur.BuildStyle(1,5,"Format","alignment",1)
+Gui.F_Main.fgPur.BuildStyle(2,5,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(2,5,"fontstyle","size",V.Local.iFontSize)
+Gui.F_Main.fgPur.BuildStyle(2,5,"Format","alignment",1)
+
+Gui.F_Main.fgPur.TextMatrix(6,0,"Part Description")
+V.Local.fTempColWidth.Set(2400)
+F.Intrinsic.Math.Mult(V.Local.fTempColWidth,V.Local.fColWidthFactor,V.Local.fTempColWidth)
+Gui.F_Main.fgPur.ColWidth(6,V.Local.fTempColWidth)
+Gui.F_Main.fgPur.BuildStyle(1,6,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(1,6,"fontstyle","bold",True)
+Gui.F_Main.fgPur.BuildStyle(1,6,"Format","alignment",1)
+Gui.F_Main.fgPur.BuildStyle(2,6,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(2,6,"fontstyle","size",V.Local.iFontSize)
+Gui.F_Main.fgPur.BuildStyle(2,6,"Format","alignment",1)
+
+Gui.F_Main.fgPur.TextMatrix(7,0,"PL")
+V.Local.fTempColWidth.Set(400)
+F.Intrinsic.Math.Mult(V.Local.fTempColWidth,V.Local.fColWidthFactor,V.Local.fTempColWidth)
+Gui.F_Main.fgPur.ColWidth(7,V.Local.fTempColWidth)
+Gui.F_Main.fgPur.BuildStyle(1,7,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(1,7,"fontstyle","bold",True)
+Gui.F_Main.fgPur.BuildStyle(1,7,"Format","alignment",1)
+Gui.F_Main.fgPur.BuildStyle(2,7,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(2,7,"fontstyle","size",V.Local.iFontSize)
+Gui.F_Main.fgPur.BuildStyle(2,7,"Format","alignment",1)
+
+Gui.F_Main.fgPur.TextMatrix(8,0,"Due Date")
+V.Local.fTempColWidth.Set(1000)
+F.Intrinsic.Math.Mult(V.Local.fTempColWidth,V.Local.fColWidthFactor,V.Local.fTempColWidth)
+Gui.F_Main.fgPur.ColWidth(8,V.Local.fTempColWidth)
+Gui.F_Main.fgPur.BuildStyle(1,8,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(1,8,"fontstyle","bold",True)
+Gui.F_Main.fgPur.BuildStyle(1,8,"Format","alignment",4)
+Gui.F_Main.fgPur.BuildStyle(2,8,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(2,8,"fontstyle","size",V.Local.iFontSize)
+Gui.F_Main.fgPur.BuildStyle(2,8,"Format","alignment",4)
+Gui.F_Main.fgPur.BuildStyle(2,8,"Format","Mask","mm/dd/yyyy")
+
+Gui.F_Main.fgPur.TextMatrix(9,0,"Order Qty")
+V.Local.fTempColWidth.Set(1150)
+F.Intrinsic.Math.Mult(V.Local.fTempColWidth,V.Local.fColWidthFactor,V.Local.fTempColWidth)
+Gui.F_Main.fgPur.ColWidth(9,V.Local.fTempColWidth)
+Gui.F_Main.fgPur.BuildStyle(1,9,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(1,9,"fontstyle","bold",True)
+Gui.F_Main.fgPur.BuildStyle(1,9,"Format","alignment",4)
+Gui.F_Main.fgPur.BuildStyle(2,9,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(2,9,"fontstyle","size",V.Local.iFontSize)
+Gui.F_Main.fgPur.BuildStyle(2,9,"Format","alignment",4)
+
+Gui.F_Main.fgPur.TextMatrix(10,0,"Qty Received")
+V.Local.fTempColWidth.Set(1300)
+F.Intrinsic.Math.Mult(V.Local.fTempColWidth,V.Local.fColWidthFactor,V.Local.fTempColWidth)
+Gui.F_Main.fgPur.ColWidth(10,V.Local.fTempColWidth)
+Gui.F_Main.fgPur.BuildStyle(1,10,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(1,10,"fontstyle","bold",True)
+Gui.F_Main.fgPur.BuildStyle(1,10,"Format","alignment",4)
+Gui.F_Main.fgPur.BuildStyle(2,10,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(2,10,"fontstyle","size",V.Local.iFontSize)
+Gui.F_Main.fgPur.BuildStyle(2,10,"Format","alignment",4)
+
+Gui.F_Main.fgPur.TextMatrix(11,0,"Qty Open")
+V.Local.fTempColWidth.Set(1150)
+F.Intrinsic.Math.Mult(V.Local.fTempColWidth,V.Local.fColWidthFactor,V.Local.fTempColWidth)
+Gui.F_Main.fgPur.ColWidth(11,V.Local.fTempColWidth)
+Gui.F_Main.fgPur.BuildStyle(1,11,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(1,11,"fontstyle","bold",True)
+Gui.F_Main.fgPur.BuildStyle(1,11,"Format","alignment",4)
+Gui.F_Main.fgPur.BuildStyle(2,11,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(2,11,"fontstyle","size",V.Local.iFontSize)
+Gui.F_Main.fgPur.BuildStyle(2,11,"Format","alignment",4)
+
+Gui.F_Main.fgPur.TextMatrix(12,0,"Qty In Inspection")
+V.Local.fTempColWidth.Set(1600)
+F.Intrinsic.Math.Mult(V.Local.fTempColWidth,V.Local.fColWidthFactor,V.Local.fTempColWidth)
+Gui.F_Main.fgPur.ColWidth(12,V.Local.fTempColWidth)
+Gui.F_Main.fgPur.BuildStyle(1,12,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(1,12,"fontstyle","bold",True)
+Gui.F_Main.fgPur.BuildStyle(1,12,"Format","alignment",4)
+Gui.F_Main.fgPur.BuildStyle(2,12,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(2,12,"fontstyle","size",V.Local.iFontSize)
+Gui.F_Main.fgPur.BuildStyle(2,12,"Format","alignment",4)
+
+Gui.F_Main.fgPur.TextMatrix(13,0,"Notes/User_5")
+V.Local.fTempColWidth.Set(1400)
+F.Intrinsic.Math.Mult(V.Local.fTempColWidth,V.Local.fColWidthFactor,V.Local.fTempColWidth)
+Gui.F_Main.fgPur.ColWidth(13,V.Local.fTempColWidth)
+Gui.F_Main.fgPur.BuildStyle(1,13,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(1,13,"fontstyle","bold",True)
+Gui.F_Main.fgPur.BuildStyle(1,13,"Format","alignment",1)
+Gui.F_Main.fgPur.BuildStyle(2,13,"type","locked",False)
+Gui.F_Main.fgPur.BuildStyle(2,13,"fontstyle","size",V.Local.iFontSize)
+Gui.F_Main.fgPur.BuildStyle(2,13,"Format","alignment",1)
+'Cell selection moves Down after hitting enter...
+Gui.F_Main.fgPur.SetProperty("Enter",0)
+
+
+Program.Sub.subBuildStyles_fg.End
+
+program.sub.f_main_resize.start
+F.Intrinsic.Control.SetErrorHandler("f_main_resize_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Sub used for Resizing/Moving Objects on the Form
+'There is a Minimum size of Form which it will not go beyond
+
+
+'Declare Variables for Moving/Sizing Objects on Form
+V.Local.iWTemp.Declare(Long,0)
+V.Local.iHTemp.Declare(Long,0)
+V.Local.iXTemp.Declare(Long,0)
+V.Local.iX2Temp.Declare(Long,0)
+V.Local.iYTemp.Declare(Long,0)
+V.Local.iY2Temp.Declare(Long,0)
+
+
+'Allow Horizontal Screen Size to Go Larger than 15360... but Not Less
+Function.Intrinsic.Control.If(Variable.Screen.F_Main.Width,<,15360)
+	Gui.F_Main..Size(15360,Variable.Screen.F_Main.Height)
+Function.Intrinsic.Control.EndIf
+
+'Allow Vertical Screen Size to Go Larger than 10605... but Not Less
+Function.Intrinsic.Control.If(Variable.Screen.F_Main.Height,<,10605)
+	Gui.F_Main..Size(Variable.Screen.F_Main.Width,10605)
+Function.Intrinsic.Control.EndIf
+
+'Resize fgPur (It Does Not Move)
+F.Intrinsic.Math.sub(V.Screen.F_Main.Width,300,V.Local.iWTemp)
+F.Intrinsic.Math.sub(V.Screen.F_Main.Height,2500,V.Local.iHTemp)
+Gui.F_Main.fgPur.Size(V.Local.iWTemp,V.Local.iHTemp)
+
+'Resize/Move Progress Bar (Y Pos Based on fgPur Height)
+F.Intrinsic.Math.Sub(V.Screen.F_Main.Width,1200,V.Local.iWTemp)
+Gui.F_Main.prgLoad.Size(V.Local.iWTemp,600)
+F.Intrinsic.Math.Div(V.Screen.F_Main!fgPur.Height,2,V.Local.iYTemp)
+F.Intrinsic.Math.Add(V.Local.iYTemp,50,V.Local.iYTemp)
+Gui.F_Main.prgLoad.Position(500,V.Local.iYTemp)
+
+'Move lblLoadMsg (XY Pos Based on fgPur Width/Height)
+F.Intrinsic.Math.Div(V.Screen.F_Main!fgPur.Height,2,V.Local.iYTemp)
+F.Intrinsic.Math.Add(V.Local.iYTemp,1000,V.Local.iYTemp)
+F.Intrinsic.Math.Div(V.Screen.F_Main!fgPur.Width,2,V.Local.iXTemp)
+F.Intrinsic.Math.Sub(V.Local.iXTemp,2000,V.Local.iXTemp)
+Gui.F_Main.lblLoadMsg.Position(V.Local.iXTemp,V.Local.iYTemp)
+
+'Move LowerHalf (It Does Not Resize) Keep it Center
+F.Intrinsic.Math.Div(V.Screen.F_Main.Width,2,V.Local.iXTemp)
+F.Intrinsic.Math.Div(V.Screen.F_Main!frmLowerHalf.Width,2,V.Local.iX2Temp)
+F.Intrinsic.Math.Sub(V.Local.iXTemp,V.Local.iX2Temp,V.Local.iXTemp)
+F.Intrinsic.Math.Sub(V.Screen.F_Main.Height,2350,V.local.iYTemp)
+Gui.F_Main.frmLowerHalf.position(V.Local.iXTemp,V.Local.iYTemp)
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("f_main_resize_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GAB_PU_PurchaseReview.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+program.sub.f_main_resize.end
+
+program.sub.fgpur_cellenter.start
+F.Intrinsic.Control.SetErrorHandler("fgpur_cellenter_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Cell Enter on fgPur Flex Grid
+
+'Store Information on Cell being Entered for Future Comparison
+V.global.iOldRow.Set(V.Args.key)
+V.Global.sOldValue.set(V.Args.TEXT)
+
+F.Intrinsic.String.Len(V.Global.sOldValue,V.Global.iOldLength)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("fgpur_cellenter_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GAB_PU_PurchaseReview.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+program.sub.fgpur_cellenter.end
+
+program.sub.fgpur_mouseup.start
+F.Intrinsic.Control.SetErrorHandler("fgpur_mouseup_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'MouseUp on fgPur Flex Grid
+'
+''Sort by Column when Header Row is clicked
+''Activate Link when Clicked
+'
+V.Local.sTemp.Declare(String)
+V.Local.sPo.Declare(String)
+
+'COLUMN SORTING
+'Don't Sort by the Following Columns
+
+F.Intrinsic.Control.If(V.Args.mouserow,=,0)
+	F.Intrinsic.Control.If(V.args.MouseCol,<>,0)
+		F.Intrinsic.Control.CallSub(Subsort,"col",V.Args.MouseCol)
+	F.Intrinsic.Control.endif
+F.Intrinsic.Control.EndIf
+
+'LINK CONTROL
+F.Intrinsic.Control.If(V.Args.MouseRow,>,0)
+
+F.Intrinsic.Control.SelectCase(V.Args.MouseCol)
+
+'Purchase Order
+F.Intrinsic.Control.Case(1)
+	Gui.F_Main.fgPur.GetTextMatrix(V.Args.mousecol,V.Args.mouserow,V.Local.sTemp)
+	F.Intrinsic.Control.If(V.Screen.F_Main!optEdit.Value,=,"False")
+		F.Intrinsic.String.Concat("V!*!",V.Local.sTemp,"!*!",V.Local.sTemp)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Concat("O!*!",V.Local.sTemp,"!*!",V.Local.sTemp)
+	F.Intrinsic.Control.EndIf
+	F.Global.General.CallWrapperASync(175200,V.Local.sTemp)
+
+F.Intrinsic.Control.EndSelect
+
+F.Intrinsic.Control.Endif
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("fgpur_mouseup_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GAB_PU_PurchaseReview.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+program.sub.fgpur_mouseup.end
+
+program.sub.fgpur_posttextmatrix.start
+F.Intrinsic.Control.SetErrorHandler("fgpur_posttextmatrix_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Declare Local Variables
+V.Local.iCurrentRow.declare(Long)
+V.Local.sCurrentValue.Declare(String)
+V.Local.iCurrentLength.Declare(Long)
+V.Local.bSubMatch.Declare(Boolean)
+
+'Populate Variables
+V.Local.iCurrentRow.Set(V.Screen.F_Main!fgPur.Row)
+Gui.F_Main.fgPur.GetTextMatrix(13,V.Local.iCurrentRow,V.Local.sCurrentValue)
+F.Intrinsic.String.Len(V.Local.sCurrentValue,V.Local.iCurrentLength)
+
+'Case Sensitive String Compare
+F.Intrinsic.String.IsInString(V.Global.sOldValue,V.Local.sCurrentValue,False,V.Local.bSubMatch)
+
+'See if Old and New string are the Same... Based on Length and Case Sensitive String Compare from Above
+F.Intrinsic.Control.If(V.Local.iCurrentLength,=,0)
+F.Intrinsic.Control.AndIf(V.global.iOldLength,=,0)
+	'Nothing in the Current or Old Cell
+	'Do Not Update
+	F.intrinsic.debug.print("TEST")
+F.Intrinsic.control.Else
+	'Something in the Cell
+	'Do a Case Sensitive String Compare
+	F.Intrinsic.String.IsInString(V.Global.sOldValue,V.Local.sCurrentValue,False,V.Local.bSubMatch)
+	
+	F.Intrinsic.Control.If(V.Local.iCurrentLength,=,V.Global.iOldLength)
+	F.intrinsic.control.andif(V.local.bsubmatch,=,True)
+		'Perfect Match
+		'Don't update
+		F.Intrinsic.Debug.Print("TEST")
+	F.Intrinsic.Control.Else
+		'Not a Match... Update
+		F.Intrinsic.Control.CallSub("subUpdate_fgPur")
+	F.intrinsic.control.endif
+	
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("fgpur_posttextmatrix_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GAB_PU_PurchaseReview.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+program.sub.fgpur_posttextmatrix.end
+
+Program.Sub.subLoad_fgPur.Start
+F.Intrinsic.Control.SetErrorHandler("subLoad_fgPur_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+
+F.ODBC.Connection!Conx.OpenLocalRecordsetRO("rstPur",V.Global.sSqlPopulate)
+F.Intrinsic.Variable.LoadUDTFromRecordset("Conx","rstPur","uglobal.uData",False,100000)
+F.ODBC.Conx!rstPur.Close
+
+Gui.F_Main.fgPur.ApplyStyle(0,1)
+F.Intrinsic.Control.CallSub(Subfilters)
+F.Intrinsic.Variable.UDTMultiQuickSort(V.uGlobal.uData!PURCHASE_ORDER,0,V.uGlobal.uData!RECORD_NO,0)
+F.Intrinsic.Control.CallSub(Subgenerate_rownumbers)
+Gui.F_Main.fgPur.LoadFromUDT("V.uGlobal.uData","ROW::0*!*PURCHASE_ORDER::1*!*RECORD_NO::2*!*NAME_VENDOR::3*!*PART::4*!*LOCATION::5*!*DESCRIPTION::6*!*PRODUCT_LINE::7*!*DATE_DUE_LINE::8*!*QTY_ORDER::9*!*QTY_RECEIVED::10*!*QTY_OPEN::11*!*QTY_RECD_NOT_INSP::12*!*USER_5::13",2)
+F.Intrinsic.Control.CallSub(Subrowstyles)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("subLoad_fgPur_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GAB_PU_PurchaseReview.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.subLoad_fgPur.End
+
+Program.Sub.subUpdate_fgPur.Start
+F.Intrinsic.Control.SetErrorHandler("subUpdate_fgPur_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Sub for Saving changes made in the Grid back to the Database
+
+
+'Declare/Set Local Variables
+V.Local.sSqlUpdate.Declare(String)
+V.Local.sUpdateText.Declare(String)
+V.Local.sUpdateText.Set("")
+V.Local.iRow.Declare(Long)
+V.Local.sPO.Declare(String)
+V.Local.sPO.Set("")
+V.Local.sPOLn.Declare(String)
+V.Local.sPOLn.Set("")
+
+V.Local.iRow.Set(V.Screen.F_Main!fgPur.Row)
+'Pull data that is to be updated from the Grid
+Gui.F_Main.fgPur.GetTextMatrix(13,V.Local.iRow,V.Local.sUpdateText)
+Gui.F_Main.fgPur.GetTextMatrix(1,V.Local.iRow,V.Local.sPO)
+Gui.F_Main.fgPur.GetTextMatrix(2,V.Local.iRow,V.Local.sPOLn)
+F.Intrinsic.String.Concat(V.Local.sPOLn,"0",V.Local.sPOLn)
+
+V.Local.sSqlUpdate.Set("UPDATE PO_LINES SET User_5 = '")
+F.Intrinsic.String.Concat(V.Local.sSqlUpdate,V.Local.sUpdateText,"'WHERE PO_TYPE='O' AND PURCHASE_ORDER='",V.Local.sSqlUpdate)
+F.Intrinsic.String.concat(V.Local.sSqlUpdate,V.Local.sPO,"' AND RECORD_NO = '",V.Local.sSqlUpdate)
+F.Intrinsic.String.concat(V.Local.sSqlUpdate,V.Local.sPOLn,"';",V.Local.sSqlUpdate)
+F.ODBC.Connection!Conx.Execute(V.Local.sSqlUpdate)
+
+
+F.Intrinsic.Debug.Stop
+
+'If No Errors
+F.Intrinsic.UI.Msgbox("Change Saved Successfully","Success")
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("subUpdate_fgPur_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GAB_PU_PurchaseReview.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.subUpdate_fgPur.End
+
+Program.Sub.subRowStyles.Start
+F.Intrinsic.Control.SetErrorHandler("subRowStyles_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+V.Local.iC.Declare(Long)
+V.Local.iRows.Declare(Long)
+V.Local.dDueDay.Declare(Date)
+
+Gui.F_Main.fgPur.buildstyle(3,1,"Color","Back",-2147483633)
+Gui.F_Main.fgPur.buildstyle(3,2,"Color","Back",-2147483633)
+Gui.F_Main.fgPur.buildstyle(3,3,"Color","Back",-2147483633)
+Gui.F_Main.fgPur.buildstyle(3,4,"Color","Back",-2147483633)
+Gui.F_Main.fgPur.buildstyle(3,5,"Color","Back",-2147483633)
+Gui.F_Main.fgPur.buildstyle(3,6,"Color","Back",-2147483633)
+Gui.F_Main.fgPur.buildstyle(3,7,"Color","Back",-2147483633)
+Gui.F_Main.fgPur.buildstyle(3,8,"Color","Back",-2147483633)
+Gui.F_Main.fgPur.buildstyle(3,9,"Color","Back",-2147483633)
+Gui.F_Main.fgPur.buildstyle(3,10,"Color","Back",-2147483633)
+Gui.F_Main.fgPur.buildstyle(3,11,"Color","Back",-2147483633)
+Gui.F_Main.fgPur.buildstyle(3,12,"Color","Back",-2147483633)
+Gui.F_Main.fgPur.buildstyle(3,13,"Color","Back",-2147483633)
+Gui.F_Main.fgPur.BuildStyle(3,1,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(3,1,"fontstyle","underline",True)
+Gui.F_Main.fgPur.BuildStyle(3,1,"Format","alignment",1)
+Gui.F_Main.fgPur.BuildStyle(3,1,"Color","Fore",16711680)
+Gui.F_Main.fgPur.BuildStyle(3,2,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(3,2,"Format","alignment",4)
+Gui.F_Main.fgPur.BuildStyle(3,3,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(3,3,"Format","alignment",1)
+Gui.F_Main.fgPur.BuildStyle(3,4,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(3,4,"Format","alignment",1)
+Gui.F_Main.fgPur.BuildStyle(3,5,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(3,5,"Format","alignment",1)
+Gui.F_Main.fgPur.BuildStyle(3,6,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(3,6,"Format","alignment",1)
+Gui.F_Main.fgPur.BuildStyle(3,7,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(3,7,"Format","alignment",1)
+Gui.F_Main.fgPur.BuildStyle(3,8,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(3,8,"Format","alignment",4)
+Gui.F_Main.fgPur.BuildStyle(3,8,"Format","Mask","mm/dd/yyyy")
+Gui.F_Main.fgPur.BuildStyle(3,9,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(3,9,"Format","alignment",4)
+Gui.F_Main.fgPur.BuildStyle(3,10,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(3,10,"Format","alignment",4)
+Gui.F_Main.fgPur.BuildStyle(3,11,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(3,11,"Format","alignment",4)
+Gui.F_Main.fgPur.BuildStyle(3,12,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(3,12,"Format","alignment",4)
+Gui.F_Main.fgPur.BuildStyle(3,13,"type","locked",False)
+Gui.F_Main.fgPur.BuildStyle(3,13,"Format","alignment",1)
+
+Gui.F_Main.fgPur.buildstyle(4,1,"Color","Back",V.Color.White)
+Gui.F_Main.fgPur.buildstyle(4,2,"Color","Back",V.Color.White)
+Gui.F_Main.fgPur.buildstyle(4,3,"Color","Back",V.Color.White)
+Gui.F_Main.fgPur.buildstyle(4,4,"Color","Back",V.Color.White)
+Gui.F_Main.fgPur.buildstyle(4,5,"Color","Back",V.Color.White)
+Gui.F_Main.fgPur.buildstyle(4,6,"Color","Back",V.Color.White)
+Gui.F_Main.fgPur.buildstyle(4,7,"Color","Back",V.Color.White)
+Gui.F_Main.fgPur.buildstyle(4,8,"Color","Back",V.Color.White)
+Gui.F_Main.fgPur.buildstyle(4,9,"Color","Back",V.Color.White)
+Gui.F_Main.fgPur.buildstyle(4,10,"Color","Back",V.Color.White)
+Gui.F_Main.fgPur.buildstyle(4,11,"Color","Back",V.Color.White)
+Gui.F_Main.fgPur.buildstyle(4,12,"Color","Back",V.Color.White)
+Gui.F_Main.fgPur.buildstyle(4,13,"Color","Back",V.Color.White)
+Gui.F_Main.fgPur.BuildStyle(4,1,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(4,1,"fontstyle","underline",True)
+Gui.F_Main.fgPur.BuildStyle(4,1,"Format","alignment",1)
+Gui.F_Main.fgPur.BuildStyle(4,1,"Color","Fore",16711680)
+Gui.F_Main.fgPur.BuildStyle(4,2,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(4,2,"Format","alignment",4)
+Gui.F_Main.fgPur.BuildStyle(4,3,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(4,3,"Format","alignment",1)
+Gui.F_Main.fgPur.BuildStyle(4,4,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(4,4,"Format","alignment",1)
+Gui.F_Main.fgPur.BuildStyle(4,5,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(4,5,"Format","alignment",1)
+Gui.F_Main.fgPur.BuildStyle(4,6,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(4,6,"Format","alignment",1)
+Gui.F_Main.fgPur.BuildStyle(4,7,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(4,7,"Format","alignment",1)
+Gui.F_Main.fgPur.BuildStyle(4,8,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(4,8,"Format","alignment",4)
+Gui.F_Main.fgPur.BuildStyle(4,8,"Format","Mask","mm/dd/yyyy")
+Gui.F_Main.fgPur.BuildStyle(4,9,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(4,9,"Format","alignment",4)
+Gui.F_Main.fgPur.BuildStyle(4,10,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(4,10,"Format","alignment",4)
+Gui.F_Main.fgPur.BuildStyle(4,11,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(4,11,"Format","alignment",4)
+Gui.F_Main.fgPur.BuildStyle(4,12,"type","locked",True)
+Gui.F_Main.fgPur.BuildStyle(4,12,"Format","alignment",4)
+Gui.F_Main.fgPur.BuildStyle(4,13,"type","locked",False)
+Gui.F_Main.fgPur.BuildStyle(4,13,"Format","alignment",1)
+
+F.Intrinsic.Math.Sub(V.Screen.F_Main!fgPur.Rows,1,V.Local.iRows)
+F.Intrinsic.Control.For(V.Local.iC,1,V.Local.iRows,1)
+	Gui.F_Main.fgPur.GetTextMatrix(8,V.Local.iC,V.Local.dDueDay)
+	F.Intrinsic.Control.If(V.Local.dDueDay,<,V.Global.dToday)
+		Gui.F_Main.fgPur.ApplyStyle(V.Local.iC,3)
+	F.Intrinsic.Control.Else
+		Gui.F_Main.fgPur.ApplyStyle(V.Local.iC,4)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Next(V.Local.iC)
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("subRowStyles_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GAB_PU_PurchaseReview.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.subRowStyles.End
+
+program.sub.cmdfvend_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdfvend_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+
+V.Local.sRet.Declare(String)
+
+Function.Intrinsic.UI.Browser(300,"",Variable.Local.sRet)
+
+F.Intrinsic.Control.If(V.Local.sRet,"=","***CANCEL***")
+	F.Intrinsic.UI.Msgbox("No Record was selected")
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.F_Main.txtFVend.Text(V.Local.sRet(1))
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdfvend_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GAB_PU_PurchaseReview.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmdfvend_click.end
+
+program.sub.cmdfpart_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdfpart_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+
+V.Local.sRet.Declare(String)
+
+Function.Intrinsic.UI.Browser(105,"",Variable.Local.sRet)
+
+F.Intrinsic.Control.If(V.Local.sRet,"=","***CANCEL***")
+	F.Intrinsic.UI.Msgbox("No Part was selected")
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.F_Main.txtFPart.Text(V.Local.sRet(0))
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdfpart_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GAB_PU_PurchaseReview.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmdfpart_click.end
+
+Program.Sub.Comments.Start
+${$0$}$GAB_OE_ShippingReview.gas$}$RRC$}$11/28/2013
+Program.Sub.Comments.End
+
